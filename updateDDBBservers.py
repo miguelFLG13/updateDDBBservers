@@ -7,7 +7,6 @@ Script to upgrade ddbb in mysql servers
 
 import os
 import sys
-import MySQLdb
 
 ddbb_servers = [] #Complete with MySQL servers
 ddbb_users = [] #Complete with MySQL users
@@ -21,17 +20,10 @@ if sys.argv[1] == "help":
 if not os.path.exists(sys.argv[1]):
     print("Cannot open " + sys.argv[1])
     sys.exit(1)
-    
-file = open(sys.argv[1])
-sql = file.read()
-file.close()
 
 i = 0
 for server in ddbb_servers:
-    connection = MySQLdb.connect(server, ddbb_users[i], ddbb_passwords[i], ddbb_names[i], charset='utf8', use_unicode=True)
-
-    cursor.execute(sql)
-    connection.commit()
-
-    connection.close()
+    
+    os.system("mysql -h" + server + " -u" + ddbb_users[i] + " -p" + ddbb_passwords[i] + " " + ddbb_names[i] + " < " + sys.argv[1])
+    
     i += 1
