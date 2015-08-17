@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 """
-Script to upgrade ddbb in Nicaragua mysql servers
+Script to upgrade ddbb in mysql servers
 17/08/2015 by Miguel Jimenez
 """
 
